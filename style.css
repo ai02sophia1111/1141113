@@ -1,0 +1,435 @@
+/* style.css */
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&display=swap');
+
+/* ✨ 1. 更新色彩變數，使用更鮮豔的顏色 */
+:root {
+    --primary-color: #58B4FF; /* 鮮豔天空藍 */
+    --primary-light: #9DD0FF; /* 亮藍色 */
+    --secondary-color: #FFD460; /* 陽光橘黃 */
+    --text-color: #4A4A4A; /* 柔和深灰 */
+    --bg-color: #FFF8E1; /* 溫暖米白 */
+    --white-color: #FFFFFF;
+    --border-radius: 20px; /* 讓圓角更明顯 */
+    --shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+body {
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    background-color: var(--bg-color);
+    background-image: url('images/animal_bg.png');
+    background-repeat: no-repeat; /* 設置背景不重複 */
+    background-size: cover;       /* 讓背景圖覆蓋整個畫面 */
+    background-position: center top;  /* 將圖片置中並靠上對齊 */
+    background-attachment: fixed; /* 固定背景，不隨滾動條滾動 */
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+/* ✨ 2. 為 Header 加上漸層背景 */
+header {
+    background: linear-gradient(135deg, var(--primary-light), var(--primary-color));
+    color: var(--white-color);
+    text-align: center;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 4px 12px rgba(88, 180, 255, 0.3); /* 加上與主色調相符的陰影 */
+}
+
+.header-icon {
+    width: 50px;
+    height: 50px;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    background-color: var(--white-color);
+    padding: 1rem;
+    box-shadow: var(--shadow);
+}
+
+/* ✨ 3. 增強按鈕的立體感和互動效果 */
+.nav-btn {
+    background-color: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 10px 20px;
+    margin: 0 10px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 700;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.nav-btn:hover {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    transform: translateY(-2px); /* 懸停時輕微上浮 */
+    box-shadow: 0 4px 8px rgba(88, 180, 255, 0.4);
+}
+
+.nav-btn.active {
+    background: linear-gradient(135deg, var(--primary-light), var(--primary-color));
+    color: var(--white-color);
+    border-color: var(--primary-color);
+    box-shadow: 0 4px 8px rgba(88, 180, 255, 0.4);
+}
+
+main {
+    padding: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.content-section {
+    display: none; /* 預設隱藏所有區塊 */
+    background-color: var(--white-color);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    animation: fadeIn 0.5s ease;
+}
+
+.content-section.active {
+    display: block; /* 只顯示 active 的區塊 */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h2 {
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+/* 短文區塊樣式 */
+.content-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+}
+
+#article-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.article-title-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border: none;
+    border-radius: 8px;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.article-title-btn:hover {
+    background-color: var(--secondary-color);
+}
+
+#article-content-area {
+    background-color: #f9f9f9;
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    white-space: pre-wrap; /* 保留換行和空格 */
+}
+
+/* 單字和諺語區塊樣式 */
+.content-container-single {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.search-wrapper {
+    display: flex;
+    gap: 10px;
+    width: 80%;
+    max-width: 400px;
+}
+
+#vocab-input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+}
+
+#vocab-search-btn, #proverb-generate-btn {
+    background: linear-gradient(135deg, #FFE8A2, var(--secondary-color));
+    border: none;
+    padding: 10px 20px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 700;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 5px rgba(255, 212, 96, 0.4);
+}
+
+#vocab-search-btn:hover, #proverb-generate-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(255, 212, 96, 0.6);
+}
+
+.result-box {
+    background-color: #f0f8ff;
+    width: 80%;
+    max-width: 500px;
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    margin: 0 auto; /* ✨ 新增：讓 result-box 本身水平置中 */
+    text-align: center;
+    min-height: 50px;
+    font-size: 1.2rem;
+}
+
+/* ✨ 4. 為單字查詢結果中的儲存按鈕加上樣式 */
+.save-vocab-btn {
+    background-color: var(--secondary-color);
+    border: none;
+    color: var(--text-color);
+    padding: 4px 10px;
+    margin-left: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s;
+}
+
+.save-vocab-btn:hover:not(:disabled) {
+    background-color: #fddc5c;
+}
+
+.save-vocab-btn:disabled {
+    background-color: #e0e0e0;
+    cursor: not-allowed;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+    color: #888;
+    font-size: 0.9rem;
+}
+
+
+/* 發音圖示樣式 */
+.speaker-icon {
+    font-size: 1.2rem; /* 圖示大小 */
+    cursor: pointer;
+    margin-left: 10px;
+    color: var(--primary-color);
+    display: inline-block; /* 讓 transform 生效 */
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.speaker-icon:hover {
+    transform: scale(1.2); /* 滑鼠移上去時放大 */
+    color: #FFB6C1; /* 柔和粉紅 */
+}
+
+/* 新增：文章朗讀按鈕樣式 */
+.speak-article-btn {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    border: none;
+    padding: 8px 15px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-top: 1rem;
+    display: block; /* 讓按鈕獨佔一行 */
+    margin-left: auto;
+    margin-right: auto;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.speak-article-btn:hover {
+    background-color: #6bbce0; /* 稍微深一點的藍色 */
+    transform: scale(1.02);
+}
+/* ✨ 新增：為了讓按鈕居中，我們需要一個容器 */
+#article-content-area {
+    text-align: center; /* 讓內部的 inline-flex 元素可以居中 */
+    background-color: #f9f9f9;
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    white-space: pre-wrap; /* 保留換行和空格 */
+}
+
+#article-content-area p {
+    text-align: left; /* 保持段落文字靠左對齊 */
+}
+
+/* 我的單字本樣式 */
+.my-vocab-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.vocab-item {
+    background-color: #f0f8ff;
+    padding: 1rem 1.5rem;
+    border-radius: var(--border-radius);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    animation: fadeIn 0.4s;
+}
+
+.vocab-item-content {
+    font-size: 1.1rem;
+}
+
+.vocab-item-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.delete-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: #ff7b7b;
+    transition: transform 0.2s, color 0.2s;
+}
+
+.delete-btn:hover {
+    color: #e60000;
+    transform: scale(1.2);
+}
+
+/* 新增：關於我頁面樣式 */
+.about-container {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    text-align: left;
+}
+
+.about-icon {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%; /* 讓圖示變圓形 */
+    object-fit: cover;
+    border: 5px solid var(--secondary-color);
+}
+
+.about-text h3 {
+    color: var(--primary-color);
+    margin-top: 0;
+}
+
+/* 新增：測驗功能樣式 */
+.hidden {
+    display: none !important;
+}
+
+#my-vocab-controls {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.quiz-btn {
+    background: linear-gradient(135deg, #ff8a8a, #ff5252);
+    color: var(--white-color);
+    border: none;
+    padding: 10px 25px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 700;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 5px rgba(255, 82, 82, 0.4);
+}
+
+.quiz-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(255, 82, 82, 0.6);
+}
+
+.quiz-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+#quiz-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    width: 100%;
+}
+
+#quiz-header {
+    width: 100%;
+    text-align: center;
+}
+
+#quiz-header h3 {
+    color: #ff5252;
+}
+
+#quiz-feedback {
+    font-size: 1.1rem;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.feedback-correct {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.feedback-wrong {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+/* 新增：測驗總結按鈕樣式 */
+#quiz-summary-controls {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+/* 重考按鈕樣式 */
+.retake-btn {
+    background: linear-gradient(135deg, #69EACB, #2EDAD5);
+    color: var(--white-color);
+    box-shadow: 0 2px 5px rgba(46, 218, 213, 0.4);
+}
+
+.retake-btn:hover {
+    box-shadow: 0 4px 10px rgba(46, 218, 213, 0.6);
+}
+}

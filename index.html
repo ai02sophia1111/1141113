@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>可愛動物英文學習小站</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="images/animal_icon.png" type="image/png">
+</head>
+<body>
+
+    <header>
+        <img src="images/animal_icon.png" alt="Icon" class="header-icon">
+        <h1>可愛動物英文學習小站</h1>
+    </header>
+
+    <nav>
+        <button id="nav-articles" class="nav-btn active">英文短文</button>
+        <button id="nav-vocab" class="nav-btn">單字查詢</button>
+        <button id="nav-proverbs" class="nav-btn">英文諺語</button>
+        <button id="nav-my-vocab" class="nav-btn">我的單字本</button>
+        <button id="nav-about" class="nav-btn">關於我</button>
+    </nav>
+
+    <main>
+        <!-- 英文短文專區 -->
+        <section id="articles-section" class="content-section active">
+            <h2>📚 英文短文專區</h2>
+            <div class="content-container">
+                <div id="article-list">
+                    <!-- 文章列表將由 JavaScript 動態生成 -->
+                </div>
+                <div id="article-content-area">
+                    <p>請從左側選擇一篇文章來閱讀。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 英文單字查詢專區 -->
+        <section id="vocab-section" class="content-section">
+            <h2>🔍 英文單字查詢</h2>
+            <div class="content-container-single">
+                <div class="search-wrapper">
+                    <input type="text" id="vocab-input" placeholder="輸入想查詢的單字...">
+                    <button id="vocab-search-btn">查詢</button>
+                </div>
+                <div id="vocab-result" class="result-box">
+                    <p>請輸入單字以查詢解釋。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 英文諺語專區 -->
+        <section id="proverbs-section" class="content-section">
+            <h2>💡 英文諺語專區</h2>
+            <div class="content-container-single">
+                <button id="proverb-generate-btn">來一句隨機諺語</button>
+                <div id="proverb-result" class="result-box">
+                    <p>點擊按鈕來獲得一句智慧諺語！</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 我的單字本專區 -->
+        <section id="my-vocab-section" class="content-section">
+            <h2>📝 我的單字本</h2>
+            <div id="my-vocab-controls">
+                <button id="start-quiz-btn" class="quiz-btn">🧠 開始測驗</button>
+            </div>
+            <div id="my-vocab-list" class="my-vocab-container">
+                <!-- 儲存的單字將會顯示在這裡 -->
+            </div>
+
+            <!-- 測驗介面 (預設隱藏) -->
+            <div id="quiz-container" class="hidden">
+                <div id="quiz-header">
+                    <h3>單字測驗中...</h3>
+                    <div id="quiz-progress"></div>
+                </div>
+                <div id="quiz-question-area" class="result-box"></div>
+                <div class="search-wrapper">
+                    <input type="text" id="quiz-answer-input" placeholder="請拼出單字...">
+                    <button id="quiz-submit-btn" class="quiz-btn">送出答案</button>
+                </div>
+                <div id="quiz-feedback"></div>
+                <!-- 測驗結束後的按鈕容器 -->
+                <div id="quiz-summary-controls" class="hidden"></div>
+            </div>
+        </section>
+
+        <!-- 關於我專區 -->
+        <section id="about-section" class="content-section">
+            <h2>🌟 關於我</h2>
+            <div class="about-container">
+                <img src="images/animal_icon.png" alt="Creator Icon" class="about-icon">
+                <div class="about-text">
+                    <h3>哈囉，我是 Sophia🐰！</h3>
+                    <p>
+                        這是一個為了幫助大家快樂學習英文而建立的小天地。
+                        我希望透過可愛的動物風格和有趣的互動功能，讓學習英文不再是一件枯燥乏味的事情。
+                    </p>
+                    <p>
+                        網站中的所有內容都是精心挑選的，從簡單的短文到實用的單字和諺語，希望能對你的英文學習之路有所幫助。
+                    </p>
+                    <p>
+                        這個網站也借助了 Gemini Code Assist 的強大能力來協助開發，讓我們一起享受學習的樂趣吧！
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Created by Sophia🐰 & Gemini Code Assist</p>
+    </footer>
+
+    <!-- 載入資料和腳本 -->
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
