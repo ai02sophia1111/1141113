@@ -112,11 +112,88 @@ h2 {
     margin-bottom: 1.5rem;
 }
 
+/* 新增：篩選器按鈕樣式 */
+.filter-controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 1.5rem;
+}
+
+.filter-btn {
+    background-color: var(--white-color);
+    border: 2px solid var(--primary-light);
+    color: var(--primary-color);
+    padding: 5px 15px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-btn.active, .filter-btn:hover {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+}
+
 /* 短文區塊樣式 */
 .content-container {
     display: grid;
     grid-template-columns: 1fr 2fr;
     gap: 2rem;
+}
+
+/* ✨ 新增：分頁控制項樣式 */
+#pagination-controls {
+    grid-column: 1 / 2; /* 讓分頁控制項位於文章列表下方 */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.pagination-btn {
+    background-color: var(--white-color);
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 5px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.2s ease;
+}
+
+.pagination-btn:hover:not(:disabled) {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+}
+
+.pagination-btn:disabled {
+    border-color: #ccc;
+    color: #ccc;
+    cursor: not-allowed;
+}
+
+/* ✨ 新增：沉浸式閱讀模式樣式 */
+.content-container.reading-view #article-list,
+.content-container.reading-view #pagination-controls {
+    display: none; /* 在閱讀模式下隱藏列表和分頁 */
+}
+
+.content-container.reading-view #article-content-area {
+    grid-column: 1 / -1; /* 讓閱讀區塊佔滿整個寬度 */
+}
+
+.back-to-list-btn {
+    display: block;
+    margin-bottom: 1.5rem;
+    background-color: #f0f0f0;
+    border: 2px solid #ddd;
+    padding: 8px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.2s ease;
+    width: fit-content; /* 按鈕寬度自適應內容 */
 }
 
 #article-list {
@@ -136,8 +213,91 @@ h2 {
     transition: background-color 0.3s;
 }
 
+/* ✨ 新增：文章等級標籤樣式 */
+.level-tag {
+    display: inline-block;
+    padding: 2px 8px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    border-radius: 10px;
+    color: var(--white-color);
+    margin-left: 8px;
+    vertical-align: middle;
+}
+
+.level-beginner {
+    background-color: #67c23a; /* 綠色 */
+}
+
+.level-intermediate {
+    background-color: #e6a23c; /* 橘色 */
+}
+
+.level-advanced {
+    background-color: #f56c6c; /* 紅色 */
+}
+
 .article-title-btn:hover {
     background-color: var(--secondary-color);
+}
+
+/* ✨ 新增：已讀文章樣式 */
+.article-title-btn.read {
+    opacity: 0.6;
+    background-color: #f0f0f0;
+}
+
+.article-title-btn.read:hover {
+    background-color: #e0e0e0;
+}
+
+.article-quiz-wrapper {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 2px dashed var(--primary-light);
+    text-align: left; /* 讓測驗內容靠左對齊 */
+}
+
+/* ✨ 新增：新聞文章元資訊樣式 */
+.article-meta {
+    font-size: 0.9rem;
+    color: #888;
+    text-align: left;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.5rem;
+}
+
+.read-more-link {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: 8px 16px;
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    text-decoration: none;
+    border-radius: var(--border-radius);
+    transition: background-color 0.3s;
+}
+
+/* ✨ 新增：新聞搜尋框的特定樣式 */
+#news-search-controls {
+    margin: 1rem auto 1.5rem auto;
+    width: 80%;
+    max-width: 500px;
+}
+
+/* ✨ 新增：讓文章中的單字可點擊 */
+.word-span {
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    border-radius: 4px;
+    padding: 0 2px;
+    margin: 0 1px;
+}
+
+.word-span:hover {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
 }
 
 #article-content-area {
@@ -432,4 +592,229 @@ footer {
 .retake-btn:hover {
     box-shadow: 0 4px 10px rgba(46, 218, 213, 0.6);
 }
+
+/* 新增：每日單字區塊樣式 */
+.daily-words-subtitle {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+    color: #666;
+}
+
+.daily-words-grid {
+    display: grid;
+    /* 自動適應寬度，每張卡片最小 280px */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.daily-word-card {
+    background-color: #f0f8ff;
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.daily-word-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(88, 180, 255, 0.2);
+}
+
+.daily-word-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--primary-light);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.daily-word-header h3 {
+    margin: 0;
+    color: var(--primary-color);
+    font-size: 1.5rem;
+}
+
+.daily-word-definition {
+    font-size: 1rem;
+    color: var(--text-color);
+    flex-grow: 1; /* 讓定義區塊填滿剩餘空間 */
+}
+
+/* 新增：文法區塊樣式 */
+.grammar-examples {
+    list-style-type: none;
+    padding-left: 0;
+    margin-top: 1.5rem;
+}
+
+.grammar-examples li {
+    background-color: #e9f5ff;
+    padding: 10px 15px;
+    border-left: 4px solid var(--primary-color);
+    margin-bottom: 10px;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+}
+
+/* 新增：文法練習題樣式 */
+.show-quiz-btn {
+    background-color: var(--secondary-color);
+    border: none;
+    padding: 8px 20px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-top: 1.5rem;
+    transition: all 0.2s ease;
+}
+
+.show-quiz-btn:hover {
+    background-color: #fddc5c;
+    transform: scale(1.05);
+}
+
+.grammar-quiz-container {
+    margin-top: 1.5rem;
+    padding: 1.5rem;
+    background-color: #f9f9f9;
+    border-radius: var(--border-radius);
+    border: 1px solid #eee;
+}
+
+.grammar-quiz-question {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.grammar-quiz-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.grammar-option-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--white-color);
+    border: 2px solid var(--primary-light);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.grammar-option-btn:hover:not(:disabled) {
+    background-color: #e9f5ff;
+    border-color: var(--primary-color);
+}
+
+.grammar-option-btn:disabled {
+    cursor: not-allowed;
+}
+
+/* ✨ 新增：文法/文章測驗的重試按鈕樣式 */
+.retry-quiz-btn {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    border: none;
+    padding: 2px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    margin-left: 10px;
+    transition: background-color 0.2s;
+}
+
+.retry-quiz-btn:hover {
+    background-color: #4a9fe0;
+}
+
+/* ✨ 新增：每日單字主題選擇器樣式 */
+#daily-word-theme {
+    padding: 5px 10px;
+    border-radius: 10px;
+    border: 2px solid var(--primary-light);
+    font-family: inherit;
+    font-size: 1rem;
+    color: var(--text-color);
+}
+
+/* ✨ 新增：學習設定區塊樣式 */
+.settings-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.setting-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.2rem;
+}
+
+#user-level-select {
+    padding: 8px 12px;
+    border-radius: 10px;
+    border: 2px solid var(--primary-light);
+    font-family: inherit;
+    font-size: 1.1rem;
+}
+
+/* ✨ 新增：彈出式字典視窗樣式 */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-overlay.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background-color: var(--white-color);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    width: 90%;
+    max-width: 600px;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.modal-overlay.visible .modal-content {
+    transform: scale(1);
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #aaa;
+    cursor: pointer;
+    border: none;
+    background: none;
 }

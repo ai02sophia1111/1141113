@@ -19,6 +19,9 @@
         <button id="nav-vocab" class="nav-btn">單字查詢</button>
         <button id="nav-proverbs" class="nav-btn">英文諺語</button>
         <button id="nav-my-vocab" class="nav-btn">我的單字本</button>
+        <button id="nav-daily-words" class="nav-btn">每日單字</button>
+        <button id="nav-grammar" class="nav-btn">英文文法</button>
+        <button id="nav-settings" class="nav-btn">學習設定</button>
         <button id="nav-about" class="nav-btn">關於我</button>
     </nav>
 
@@ -26,10 +29,24 @@
         <!-- 英文短文專區 -->
         <section id="articles-section" class="content-section active">
             <h2>📚 英文短文專區</h2>
+            <div id="article-filter-controls" class="filter-controls">
+                <button class="filter-btn active" data-level="all">全部</button>
+                <button class="filter-btn" data-level="beginner">初級</button>
+                <button class="filter-btn" data-level="intermediate">中級</button>
+                <button class="filter-btn" data-level="advanced">高級</button>
+                <button class="filter-btn" data-level="news">新聞時事</button>
+            </div>
+            <!-- ✨ 新增：新聞關鍵字搜尋框 (預設隱藏) -->
+            <div id="news-search-controls" class="search-wrapper hidden">
+                <input type="text" id="news-keyword-input" placeholder="輸入英文新聞關鍵字 (e.g., technology)">
+                <button id="news-search-btn">搜尋新聞</button>
+            </div>
             <div class="content-container">
                 <div id="article-list">
                     <!-- 文章列表將由 JavaScript 動態生成 -->
                 </div>
+                <!-- ✨ 新增：分頁控制項容器 -->
+                <div id="pagination-controls"></div>
                 <div id="article-content-area">
                     <p>請從左側選擇一篇文章來閱讀。</p>
                 </div>
@@ -65,7 +82,20 @@
         <section id="my-vocab-section" class="content-section">
             <h2>📝 我的單字本</h2>
             <div id="my-vocab-controls">
-                <button id="start-quiz-btn" class="quiz-btn">🧠 開始測驗</button>
+                <!-- ✨ 新增開始 -->
+                <div class="quiz-options">
+                    <label for="quiz-word-count">測驗單字數量：</label>
+                    <input type="number" id="quiz-word-count" min="1" value="10">
+                    <label for="quiz-type">測驗題型：</label>
+                    <select id="quiz-type">
+                        <option value="def-to-eng" selected>看解釋拼單字</option>
+                        <option value="eng-to-chi">看英文選中文</option>
+                    </select>
+                </div>
+                <!-- ✨ 新增結束 -->
+                <div class="quiz-options">
+                </div>
+                <button id="start-quiz-btn">開始測驗</button>
             </div>
             <div id="my-vocab-list" class="my-vocab-container">
                 <!-- 儲存的單字將會顯示在這裡 -->
@@ -85,6 +115,56 @@
                 <div id="quiz-feedback"></div>
                 <!-- 測驗結束後的按鈕容器 -->
                 <div id="quiz-summary-controls" class="hidden"></div>
+            </div>
+        </section>
+
+        <!-- 每日單字專區 -->
+        <section id="daily-words-section" class="content-section">
+            <h2>📅 每日六單字</h2>
+            <p class="daily-words-subtitle">每天學習六個新單字，單字會根據日期固定，讓你每天都有新挑戰！</p>
+            <div id="daily-words-controls" class="filter-controls">
+                <label for="daily-word-theme">選擇主題：</label>
+                <select id="daily-word-theme"></select>
+            </div>
+            <div id="daily-words-container" class="daily-words-grid">
+                <!-- 每日單字將由 JavaScript 動態生成 -->
+            </div>
+        </section>
+
+        <!-- 英文文法專區 -->
+        <section id="grammar-section" class="content-section">
+            <h2>📜 英文文法</h2>
+            <div class="content-container">
+                <div id="grammar-list">
+                    <!-- 文法主題列表將由 JavaScript 動態生成 -->
+                </div>
+                <div id="grammar-content-area">
+                    <p>請從左側選擇一個文法主題來學習。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 學習設定專區 -->
+        <section id="settings-section" class="content-section">
+            <h2>⚙️ 學習設定</h2>
+            <div class="settings-container">
+                <div class="setting-item">
+                    <label for="user-level-select">請選擇您的預設學習等級：</label>
+                    <select id="user-level-select">
+                        <option value="all">全部</option>
+                        <option value="beginner">初級</option>
+                        <option value="intermediate">中級</option>
+                        <option value="advanced">高級</option>
+                    </select>
+                </div>
+                <div class="setting-item">
+                    <label for="auto-save-toggle">自動儲存查詢過的單字：</label>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="auto-save-toggle">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <p id="settings-feedback" class="feedback-correct hidden">設定已儲存！</p>
             </div>
         </section>
 
